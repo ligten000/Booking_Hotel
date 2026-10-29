@@ -1,0 +1,279 @@
+/* ============================================================
+   Atlantis — modern design layer (2026)
+   A clean, contemporary travel / hotel / resort look over the
+   existing probootstrap markup. Loaded LAST so it wins.
+   Accent: serene teal (#0d9488) + warm gold. Keeps it simple.
+   NOTE: this template has no Bootstrap .media objects and no
+   self-promo/ad banners, so no shim / hide rules are needed.
+   ============================================================ */
+
+:root {
+  --accent: #0d9488;          /* serene teal */
+  --accent-dark: #0f766e;
+  --accent-deep: #124b47;     /* deep teal for panels + footer */
+  --gold: #c8992e;            /* warm gold — ratings / badges */
+  --gold-soft: #e0b64d;
+  --text: #1b2b29;
+  --muted: #5d6d6a;
+  --faint: #93a29f;
+  --line: #e7ecea;
+  --line-strong: #d6dedb;
+  --bg: #ffffff;
+  --bg-soft: #f4f8f7;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --radius-pill: 999px;
+  --shadow: 0 1px 2px rgba(18,75,71,.05), 0 8px 22px rgba(18,75,71,.07);
+  --shadow-hover: 0 18px 42px rgba(18,75,71,.15);
+}
+
+/* ---------- base ---------- */
+body {
+  font-family: "Rubik", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Crimson Text", "Playfair Display", Georgia, "Times New Roman", serif;
+  color: var(--text);
+}
+a { transition: color .18s ease; }
+a:hover { color: var(--accent); }
+img { max-width: 100%; height: auto; }
+::selection { background: rgba(13,148,136,.18); }
+
+/* ---------- header + nav ---------- */
+.probootstrap-header {
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 1px 0 rgba(18,75,71,.02);
+}
+.probootstrap-main-nav li a {
+  position: relative;
+  display: inline-block;
+  color: var(--text);
+  font-weight: 500;
+  letter-spacing: .08em;
+  padding-bottom: 5px;
+  transition: color .18s ease;
+}
+.probootstrap-main-nav li a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .2s ease;
+}
+.probootstrap-main-nav li:hover a::after,
+.probootstrap-main-nav li.active a::after { transform: scaleX(1); }
+.probootstrap-main-nav li a:hover,
+.probootstrap-main-nav li.active a { color: var(--accent); }
+.probootstrap-main-nav li.active a { border-bottom: none !important; }
+.probootstrap-main-nav li a:hover { color: var(--accent); }
+
+/* ---------- hero slider: richer gradient overlay (scoped to slider only) ---------- */
+.flexslider .slides > li.overlay:before {
+  background: linear-gradient(to bottom,
+              rgba(11,28,26,.34) 0%,
+              rgba(11,28,26,.12) 42%,
+              rgba(9,22,20,.68) 100%);
+}
+.flexslider .probootstrap-heading {
+  letter-spacing: .01em;
+  text-shadow: 0 2px 26px rgba(0,0,0,.42);
+}
+.flexslider .probootstrap-sub-wrap { text-shadow: 0 1px 14px rgba(0,0,0,.4); }
+/* paging dots -> accent */
+.flexslider .flex-control-paging a.flex-active { background: var(--accent); }
+
+/* ---------- CTA band ---------- */
+.probootstrap-cta.probootstrap-light {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.probootstrap-cta .probootstrap-cta-heading { color: var(--text); }
+.probootstrap-cta .probootstrap-cta-heading span { color: var(--muted); }
+
+/* ---------- buttons: teal pills ---------- */
+.btn.btn-primary {
+  background: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+  letter-spacing: .02em;
+  padding-left: 26px;
+  padding-right: 26px;
+  box-shadow: 0 6px 16px rgba(13,148,136,.22);
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.btn.btn-primary:hover,
+.btn.btn-primary:active,
+.btn.btn-primary:focus {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: #fff;
+  box-shadow: 0 9px 22px rgba(13,148,136,.30);
+}
+.btn.btn-primary:hover { transform: translateY(-1px); }
+.btn.btn-ghost {
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  border-radius: var(--radius-pill);
+}
+.btn.btn-ghost:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ---------- section headings + accents ---------- */
+.probootstrap-section.probootstrap-section-dark { background: var(--bg-soft); }
+.probootstrap-section .heading-with-icon,
+.probootstrap-section .heading-with-icon i { color: var(--accent); }
+.link-with-icon { color: var(--accent); }
+.link-with-icon:hover, .link-with-icon:focus { color: var(--accent-dark); }
+a.hover-reverse:hover, a.hover-reverse:focus, a.hover-reverse:active { color: var(--accent); }
+
+/* ---------- services (icon + text) ---------- */
+.service .icon i,
+.service.left-icon .icon i { color: var(--accent); }
+.service.hover_service:hover, .service.hover_service:focus { box-shadow: var(--shadow-hover); }
+
+/* ---------- Best Rooms cards (block-image-text) ---------- */
+.probootstrap-block-image-text {
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.probootstrap-block-image-text:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.probootstrap-block-image-text figure { overflow: hidden; }
+.probootstrap-block-image-text figure img {
+  width: 100%; display: block;
+  transition: transform .6s ease;
+}
+.probootstrap-block-image-text:hover figure img { transform: scale(1.05); }
+.probootstrap-block-image-text .text h3 a { color: var(--text); }
+.probootstrap-block-image-text .text h3 a:hover { color: var(--accent); }
+.probootstrap-block-image-text .actions { bottom: 14px; right: 14px; }
+.probootstrap-block-image-text .actions a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 46px; height: 46px; margin-right: 0;
+  color: #fff; background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 8px 18px rgba(0,0,0,.28);
+  transition: background .2s ease, transform .2s ease;
+}
+.probootstrap-block-image-text .actions a:hover { background: var(--accent-dark); transform: scale(1.06); }
+
+/* ---------- ratings / meta ---------- */
+.post-meta .review-rate {
+  background: var(--gold);
+  color: #fff;
+  font-weight: 600;
+  padding: 3px 6px;
+}
+.post-meta .icon-star { color: var(--gold); }
+.post-meta .icon-user2 { color: var(--faint); }
+
+/* ---------- room cards ---------- */
+.probootstrap-room {
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.probootstrap-room:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.probootstrap-room > a { display: block; overflow: hidden; }
+.probootstrap-room > a img { width: 100%; display: block; transition: transform .6s ease; }
+.probootstrap-room:hover > a img { transform: scale(1.05); }
+.probootstrap-room .text { border: 0; padding: 22px 20px; }
+.probootstrap-room h3 { line-height: 1.25; transition: color .18s ease; }
+.probootstrap-room:hover h3 { color: var(--accent); }
+
+/* carousel prev / next */
+.probootstrap-owl-navigation li a {
+  background: var(--bg-soft);
+  color: var(--muted);
+  border: 1px solid var(--line-strong);
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.probootstrap-owl-navigation li a:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ---------- split "Best 5 Star hotel" panel -> deep teal ---------- */
+.probootstrap-half .text {
+  background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent-deep) 100%);
+}
+.probootstrap-half .text h2 { color: #fff; }
+.probootstrap-half .text p { color: rgba(255,255,255,.78); }
+.probootstrap-half .text .link-with-icon.white { color: #fff; }
+
+/* ---------- blog listing (hentry) ---------- */
+.probootstrap-hentry > p:first-child a {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.probootstrap-hentry > p:first-child a img { width: 100%; display: block; transition: transform .6s ease; }
+.probootstrap-hentry:hover > p:first-child a img { transform: scale(1.05); }
+.probootstrap-hentry h3 a { color: var(--text); }
+.probootstrap-hentry h3 a:hover { color: var(--accent); }
+.probootstrap-hentry .text-mute { color: var(--faint); font-size: 13px; }
+.probootstrap-hentry .text-mute .icon-bubble { color: var(--accent); }
+
+/* ---------- forms ---------- */
+.probootstrap-form .form-control {
+  border: 2px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-soft);
+}
+.probootstrap-form .form-control:focus,
+.probootstrap-form .form-control:active {
+  border-color: var(--accent);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(13,148,136,.12);
+}
+.probootstrap-form .form-group .form-field .icon { color: var(--muted); }
+
+/* contact-info blocks (on white body content -> teal icons) */
+.probootstrap-contact-info li i { color: var(--accent); }
+
+/* ---------- polished dark footer ---------- */
+.probootstrap-footer {
+  background: var(--accent-deep);
+  color: rgba(255,255,255,.72);
+}
+.probootstrap-footer .probootstrap-footer-widget h3,
+.probootstrap-footer .probootstrap-footer-widget h4 { color: #fff; }
+.probootstrap-footer p,
+.probootstrap-footer .probootstrap-contact-info li span { color: rgba(255,255,255,.62); }
+.probootstrap-footer a { color: rgba(255,255,255,.72); }
+.probootstrap-footer a:hover { color: #fff; }
+.probootstrap-footer .link-with-icon { color: var(--gold-soft); }
+.probootstrap-footer .link-with-icon:hover { color: #fff; }
+/* footer wordmark -> white so it reads on dark */
+.probootstrap-footer .probootstrap-footer-widget p.mt40 img { filter: brightness(0) invert(1); opacity: .9; }
+/* footer mini blog list */
+.probootstrap-footer .probootstrap-blog-list li a,
+.probootstrap-footer .probootstrap-blog-list li a .probootstrap-text h4 { color: rgba(255,255,255,.92); }
+.probootstrap-footer .probootstrap-blog-list li a:hover .probootstrap-text h4 { color: var(--gold-soft); }
+.probootstrap-footer .probootstrap-blog-list li a .probootstrap-text .meta { color: rgba(255,255,255,.42); }
+.probootstrap-footer .probootstrap-blog-list li a p { color: rgba(255,255,255,.55); }
+.probootstrap-footer .probootstrap-blog-list li a .probootstrap-image img { border-radius: var(--radius-sm); }
+/* footer contact + social -> gold hover */
+.probootstrap-footer .probootstrap-contact-info li i { color: var(--gold-soft); }
+.probootstrap-footer-social li a { color: rgba(255,255,255,.68); transition: color .18s ease; }
+.probootstrap-footer-social li a:hover { color: var(--gold-soft); }
+.probootstrap-footer small { color: rgba(255,255,255,.5); }
+.probootstrap-footer small a { color: rgba(255,255,255,.72); }
+.probootstrap-footer small a:hover { color: #fff; }
+
+/* ---------- responsive ---------- */
+@media screen and (max-width: 768px) {
+  .flexslider .probootstrap-heading { font-size: 38px; line-height: 46px; }
+  .probootstrap-block-image-text .text h3 { font-size: 24px; }
+}
